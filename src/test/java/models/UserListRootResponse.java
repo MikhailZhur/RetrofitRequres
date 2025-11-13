@@ -9,7 +9,7 @@ public class UserListRootResponse {
     private Integer total_pages;
     private List<UserResponse> data;
     private Support support;
-    private Meta meta;
+    private Meta _meta;
 
     public UserListRootResponse(Integer page, Integer per_page, Integer total, Integer total_pages, List<UserResponse> data, Support support, Meta meta) {
         this.page = page;
@@ -18,7 +18,7 @@ public class UserListRootResponse {
         this.total_pages = total_pages;
         this.data = data;
         this.support = support;
-        this.meta = meta;
+        this._meta = meta;
     }
 
     public Integer getPage() {
@@ -45,8 +45,8 @@ public class UserListRootResponse {
         return support;
     }
 
-    public Meta getMeta() {
-        return meta;
+    public Meta get_meta() {
+        return _meta;
     }
 
     public void setPage(Integer page) {
@@ -73,7 +73,7 @@ public class UserListRootResponse {
         this.support = support;
     }
 
-    public void setMeta(Meta meta) {
-        this.meta = meta;
+    public void set_meta(Meta _meta) {
+        this._meta = _meta;
     }
 }
