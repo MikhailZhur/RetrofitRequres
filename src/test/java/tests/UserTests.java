@@ -65,4 +65,34 @@ public class UserTests {
         assertTrue(userResponse.getCreatedAt().matches(correctTimePattern));
     }
 
+    @Test
+    public void testUpdateUser() throws IOException {
+        String apiKey = "reqres-free-v1";
+        int id = 2;
+        String correctTimePattern = "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}.\\d{3}Z";
+        String name = "Misha";
+        String job = "AQA";
+        UserRequest userRequest = new UserRequest(name,job);
+
+        Response<UpdateUserResponse> response = userService.updateUserById(apiKey, id, userRequest).execute();
+        assertTrue(response.isSuccessful());
+
+        UpdateUserResponse updateUserResponse = response.body();
+
+        assertEquals(name, updateUserResponse.getName());
+        assertEquals(job, updateUserResponse.getJob());
+        assertTrue(updateUserResponse.getUpdatedAt().matches(correctTimePattern));
+
+    }
+
+    @Test
+    public void testDeleteUser() throws IOException {
+        String apiKey = "reqres-free-v1";
+        int id = 2;
+
+        Response<Void> response = userService.deleteUserById(apiKey, id).execute();
+
+        assertEquals(204, response.code());
+    }
+
 }
